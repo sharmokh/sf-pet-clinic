@@ -1,2 +1,2 @@
-# sf-pet-clinic
+# Pet Clinic Project
 Spring Framework Pet Clinic Project
