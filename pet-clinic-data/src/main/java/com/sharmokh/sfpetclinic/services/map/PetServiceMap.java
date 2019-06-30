@@ -19,7 +19,7 @@ public class PetServiceMap extends AbstractMapService<Pet, Long> implements Crud
 
     @Override
     public Pet save(Pet object) {
-        return super.save(object.getID(), object);
+        return super.save(object.getId(), object);
     }
 
     @Override
