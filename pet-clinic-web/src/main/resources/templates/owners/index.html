@@ -5,6 +5,21 @@
     <title>List of Owners</title>
 </head>
     <body>
-        <h1 th:text="'List of Owners'">List of Owners...</h1>
+
+    <!-- id="owners" type="com.sharmokh.sfpetclinic.model.Owner /-->
+
+        <h1 th:text="'List of Owners'">Owner's List</h1>
+        <table>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
+            <tr th:each="owner:${owners}">
+                <td th:text="${owner.id}">1</td>
+                <td th:text="${owner.firstName}">Joe</td>
+                <td th:text="${owner.lastName}">Smith</td>
+            </tr>
+        </table>
     </body>
 </html>
