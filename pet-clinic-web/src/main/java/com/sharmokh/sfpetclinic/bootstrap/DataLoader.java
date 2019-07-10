@@ -1,10 +1,7 @@
 package com.sharmokh.sfpetclinic.bootstrap;
 
 import com.sharmokh.sfpetclinic.model.*;
-import com.sharmokh.sfpetclinic.services.OwnerService;
-import com.sharmokh.sfpetclinic.services.PetTypeService;
-import com.sharmokh.sfpetclinic.services.SpecialtyService;
-import com.sharmokh.sfpetclinic.services.VetService;
+import com.sharmokh.sfpetclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +14,15 @@ public class DataLoader implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialtyService specialtyService;
+    private final VisitService visitService;
 
-    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialtyService specialtyService) {
+    public DataLoader(OwnerService ownerService, VetService vetService, PetTypeService petTypeService,
+                      SpecialtyService specialtyService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialtyService = specialtyService;
+        this.visitService = visitService;
     }
 
     @Override
@@ -84,6 +84,13 @@ public class DataLoader implements CommandLineRunner {
         fioriePet.setName("Rocket");
         owner2.getPets().add(fioriePet);
         ownerService.save(owner2);
+
+        Visit catVisit = new Visit();
+        catVisit.setPet(zoePet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Sneezy Kitty");
+        visitService.save(catVisit);
+        zoePet.getVisits().add(catVisit);
 
         System.out.println("Loaded Owners...");
 
