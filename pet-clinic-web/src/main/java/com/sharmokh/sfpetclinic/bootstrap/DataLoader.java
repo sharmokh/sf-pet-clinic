@@ -6,6 +6,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
+import java.util.HashSet;
 
 @Component
 public class DataLoader implements CommandLineRunner {
@@ -106,6 +107,17 @@ public class DataLoader implements CommandLineRunner {
         vet2.getSpecialties().add(savedRadiology);
         vet2.getSpecialties().add(savedSurgery);
         vetService.save(vet2);
+
+        // Lombok builder method
+        Vet vet3 = Vet.builder()
+                .firstName("Grace")
+                .lastName("Sharmokh")
+                .specialties(new HashSet<Specialty>(){{
+                    add(savedDentistry);
+                    add(savedSurgery);
+                }})
+                .build();
+        vetService.save(vet3);
 
         System.out.println("Loaded Vets...");
     }
