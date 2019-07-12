@@ -16,8 +16,6 @@ class OwnerMapServiceTest {
     final String LAST_NAME = "Sharmokh";
     Long ownerID;
 
-
-
     @BeforeEach
     void setUp() {
         Owner owner = Owner.builder().firstName(FIRST_NAME).lastName(LAST_NAME).build();
