@@ -12,14 +12,15 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 class OwnerMapServiceTest {
 
     OwnerMapService ownerMapService;
-    final String firstName = "Steve";
-    final String lastName = "Sharmokh";
+    final String FIRST_NAME = "Steve";
+    final String LAST_NAME = "Sharmokh";
     Long ownerID;
+
 
 
     @BeforeEach
     void setUp() {
-        Owner owner = Owner.builder().firstName(firstName).lastName(lastName).build();
+        Owner owner = Owner.builder().firstName(FIRST_NAME).lastName(LAST_NAME).build();
         ownerMapService = new OwnerMapService(new PetTypeMapService(), new PetMapService());
         ownerMapService.save(owner);
         ownerID = owner.getId();
@@ -59,7 +60,7 @@ class OwnerMapServiceTest {
 
     @Test
     void findByLastName() {
-        Owner owner = ownerMapService.findByLastName(lastName);
-        assertEquals(lastName, owner.getLastName());
+        Owner owner = ownerMapService.findByLastName(LAST_NAME);
+        assertEquals(LAST_NAME, owner.getLastName());
     }
 }
