@@ -23,8 +23,8 @@ public class Vet extends Person {
     private Set<Specialty> specialties = new HashSet<>();
 
     @Builder
-    public Vet(String firstName, String lastName, Set<Specialty> specialties) {
-        super(firstName, lastName);
+    public Vet(Long id, String firstName, String lastName, Set<Specialty> specialties) {
+        super(id, firstName, lastName);
         this.specialties = specialties;
     }
 }
