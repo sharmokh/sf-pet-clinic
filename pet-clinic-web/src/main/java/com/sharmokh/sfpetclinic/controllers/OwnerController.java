@@ -49,7 +49,7 @@ public class OwnerController {
             owner.setLastName("");
         }
 
-        List<Owner> results = ownerService.findAllByLastName(owner.getLastName());
+        List<Owner> results = ownerService.findByLastNameLikeIgnoreCase("%"+owner.getLastName()+"%");
 
         if (results.isEmpty()) {
             bindingResult.rejectValue("lastName", "notFound", "not found");
