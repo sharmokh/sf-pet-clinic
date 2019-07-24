@@ -76,7 +76,7 @@ public class PetController {
     }
 
     @PostMapping("/pets/{petId}/edit")
-    public String processExistingPet(Owner owner, @Valid Pet pet, BindingResult result, Model model) {
+    public String processExistingPet(@Valid Pet pet, Owner owner, BindingResult result, Model model) {
         if (result.hasErrors()) {
             pet.setOwner(owner);
             model.addAttribute("pet", pet);
