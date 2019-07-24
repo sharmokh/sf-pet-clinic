@@ -49,6 +49,7 @@ public class PetController {
     public String createNewPet(Owner owner, Model model) {
         Pet pet = Pet.builder().build();
         owner.getPets().add(pet);
+        pet.setOwner(owner);
         model.addAttribute("pet", pet);
         return "pets/createOrUpdatePetForm";
     }
@@ -82,6 +83,7 @@ public class PetController {
             return "pets/createOrUpdatePetForm";
         } else {
             owner.getPets().add(pet);
+            pet.setOwner(owner);
             petService.save(pet);
             return "redirect:/owners/" + owner.getId();
         }
