@@ -11,15 +11,19 @@
         <table id="vets" class="table table-striped">
             <thead>
                 <tr>
-                    <th style="width: 150px">ID</th>
-                    <th style="width: 150px">First Name</th>
-                    <th style="width: 150px">Last Name</th>
+                    <th class="col-md-2" style="width: 150px">First Name</th>
+                    <th class="col-md-2" style="width: 150px">Last Name</th>
+                    <th class="col-md-8" style="...">Specialties</th>
                 </tr>
             </thead>
             <tr th:each="vet:${vets}">
-                <td th:text="${vet.id}">1</td>
                 <td th:text="${vet.firstName}">Joe</td>
                 <td th:text="${vet.lastName}">Smith</td>
+                <td>
+                    <span th:each="speciality : ${vet.specialties}"
+                    th:text="${speciality.description + ' '}"/>
+                    <span th:if="${vet?.specialties?.size() == 0}">None</span>
+                </td>
             </tr>
         </table>
     </body>
